@@ -106,8 +106,9 @@
 	error_reporting(0);
 	if(isset($_POST['submit']))
 	{
-		ini_set('max_execution_time', $_POST['max_execution_time']); //3600 seconds = 1hr 
-		//Upload SQL
+		//Max execution time for large database. By default 900 Seconds or 15 minutes 
+		ini_set('max_execution_time', $_POST['max_execution_time']); 
+		//Upload SQL file 
 		$target_path = getcwd().'/';
 		$target_path = $target_path . basename( $_FILES['sql_file']['name']); 
 		
@@ -133,7 +134,7 @@
 		fwrite($myfile, $txt);
 		fclose($myfile);
 		
-		//Export the database and output the status to the page
+		//Import the database and output the status
 		$command='mysql -h' .$mysql_host_name .' -u' .$mysql_user_name .' -p' .$mysql_password .' ' .$mysql_database_name .' < ' .$mysql_file_name;
 		exec($command,$output=array(),$worked);
 		switch($worked)
