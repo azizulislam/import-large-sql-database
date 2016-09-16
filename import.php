@@ -6,8 +6,7 @@ $mysqlPassword ='Tmax3333';
 $mysqlHostName ='localhost';
 $mysqlImportFilename ='wasperling.sql';
 
-//DO NOT EDIT BELOW THIS LINE
-//Export the database and output the status to the page
+//Import the database and output the status to the page
 $command='mysql -h' .$mysqlHostName .' -u' .$mysqlUserName .' -p' .$mysqlPassword .' ' .$mysqlDatabaseName .' < ' .$mysqlImportFilename;
 exec($command,$output=array(),$worked);
 switch($worked){
